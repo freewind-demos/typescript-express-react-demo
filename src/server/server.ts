@@ -1,8 +1,11 @@
-import * as express from 'express';
+import path from 'path';
+import express from 'express';
 
 const app = express();
 
-app.get('/:name', (req, res) => {
+app.use(express.static(path.join(__dirname, '../../public')));
+
+app.get('/hello/:name', (req, res) => {
   const name = req.params.name;
   res.send(`Hello, ${name}`);
 });
